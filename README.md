@@ -74,7 +74,12 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{"node_address": "http://127.0.0.1:8000"}'
 ```
+*Or using Powershell :*
 
+```sh
+Invoke-RestMethod -Uri 'http://127.0.0.1:8001/register_with' -Method Post -Headers @{'Content-Type'='application/json'} -Body '{"node_address": "http://127.0.0.1:8000"}'
+
+```
 This will make the node at port 8000 aware of the nodes at port 8001 and make the newer nodes sync the chain with the node 8000, so that they are able to actively participate in the mining process post registration.
 
 Once you do all this, you can run the application, create transactions (post vote via the web inteface), and once you mine the transactions, all the nodes in the network will update the chain. The chain of the nodes can also be inspected by inovking `/chain` endpoint using cURL.
@@ -82,6 +87,10 @@ Once you do all this, you can run the application, create transactions (post vot
 ```sh
 curl -X GET http://localhost:8001/chain
 ```
+
+
+
+
 Use [JSON Viewer](https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh) extension  to display the chain visually
 ## References
 [BLOCKCHAIN-VOTING-SYSTEM](https://github.com/hariharan1412/BLOCKCHAIN-VOTING-SYSTEM.git)
