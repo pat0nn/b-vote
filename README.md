@@ -82,7 +82,7 @@ Once you do all this, you can run the application, create transactions (post vot
 ```sh
 curl -X GET http://localhost:8001/chain
 ```
-User [JSON Viewer](https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh) extension  to display the chain visually
+Use [JSON Viewer](https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh) extension  to display the chain visually
 ## References
 [BLOCKCHAIN-VOTING-SYSTEM](https://github.com/hariharan1412/BLOCKCHAIN-VOTING-SYSTEM.git)
 
