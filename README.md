@@ -17,7 +17,7 @@ cd E-voting-system-using-blockchain-and-python
 pip install -r requirements.txt
 ```
 
-Start a blockchain node server,
+Start blockchain server,
 ```sh
 python app.py
 ```
