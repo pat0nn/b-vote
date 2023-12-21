@@ -7,7 +7,7 @@
 Clone the project,
 
 ```sh
-$ git clone https://github.com/pat0nn/voting-system.git
+git clone https://github.com/pat0nn/voting-system.git
 ```
 
 Install the dependencies,
@@ -60,31 +60,23 @@ Here are a few screenshots
 
 ***
 
-To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. 
+To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. You can do this by clone project to another folder, change the port (such as 8001) and run 
 
-Here's a sample scenario that you might wanna try,
 
-You can use the following cURL requests to register the nodes at port 8001 and 8002 with the already running 8000.
+Then you can use the following cURL requests to register the nodes at port 8001 with the already running 8000.
 ```
 curl -X POST \
   http://127.0.0.1:8001/register_with \
   -H 'Content-Type: application/json' \
   -d '{"node_address": "http://127.0.0.1:8000"}'
 ```
-```
-curl -X POST \
-  http://127.0.0.1:8002/register_with \
-  -H 'Content-Type: application/json' \
-  -d '{"node_address": "http://127.0.0.1:8000"}'
-```
 
-This will make the node at port 8000 aware of the nodes at port 8001 and 8002, and make the newer nodes sync the chain with the node 8000, so that they are able to actively participate in the mining process post registration.
+This will make the node at port 8000 aware of the nodes at port 8001 and make the newer nodes sync the chain with the node 8000, so that they are able to actively participate in the mining process post registration.
 
 Once you do all this, you can run the application, create transactions (post vote via the web inteface), and once you mine the transactions, all the nodes in the network will update the chain. The chain of the nodes can also be inspected by inovking `/chain` endpoint using cURL.
 
 ```sh
-$ curl -X GET http://localhost:8001/chain
-$ curl -X GET http://localhost:8002/chain
+curl -X GET http://localhost:8001/chain
 ```
 
 ## References
