@@ -85,9 +85,8 @@ This will make the node at port 8000 aware of the nodes at port 8001 and make th
 Once you do all this, you can run the application, create transactions (post vote via the web inteface), and once you mine the transactions, all the nodes in the network will update the chain. The chain of the nodes can also be inspected by inovking `/chain` endpoint using cURL.
 
 ```sh
-curl -X GET http://localhost:8001/chain
+http://localhost:8001/chain
 ```
-
 
 
 
