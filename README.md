@@ -36,21 +36,25 @@ Here are a few screenshots
 
 ![image.png](./img/login.png)
 
-##### 2. Homepage
+##### 2. Register
+
+![image.png](./img/register.png)
+
+##### 3. Homepage
 
 ![image.png](./img/homepage.png)
 
-##### 3. Votepage
+##### 4. Votepage
 
 ![image.png](./img/vote.png)
 
-##### 4. Resutl (Admin only)
+##### 5. Resutl (Admin only)
 
 ![image.png](./img/result.png)
 
 **Note**: You can change admin in [credentials.py](./credentials.py) file. Login with the admin account and go to the result page by adding the /adminPortal endpoint
 
-##### 5. Chain
+##### 6. Chain
 
 ![image.png](./img/chain.png)
 
@@ -78,7 +82,7 @@ Once you do all this, you can run the application, create transactions (post vot
 ```sh
 curl -X GET http://localhost:8001/chain
 ```
-
+User [JSON Viewer](https://chromewebstore.google.com/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh) extension  to display the chain visually
 ## References
 [BLOCKCHAIN-VOTING-SYSTEM](https://github.com/hariharan1412/BLOCKCHAIN-VOTING-SYSTEM.git)
 

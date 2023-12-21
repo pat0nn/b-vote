@@ -431,10 +431,10 @@ def vote():
     if  request.method == 'POST':
         
         new_tx_address = "{}/new_transaction".format(CONNECTED_SERVICE_ADDRESS)
-        if request.form['voteBtn'] == 'AANG':
+        if request.form['voteBtn'] == 'TOM':
             post_object = {
             'voter_id': user.id ,
-            'party': 'AANG'
+            'party': 'TOM'
             }
             requests.post(new_tx_address,
                           json=post_object,
