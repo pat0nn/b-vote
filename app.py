@@ -40,15 +40,11 @@ class User(db.Model , UserMixin):
     id = db.Column(db.Integer , primary_key=True)
     username = db.Column(db.String(20) , nullable=False , unique=True)
     password = db.Column(db.String(80) , nullable=False)
-    address  = db.Column(db.String(80) , nullable=False , unique=True)
-    key      = db.Column(db.String(80) , nullable=False , unique=True)
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired() , Length(min=1 , max=20)], render_kw={"placeholder" : "Username"})
     password = PasswordField(validators=[InputRequired() , Length(min=1 , max=20)], render_kw={"placeholder" : "Password"})
-    address = StringField(validators=[InputRequired() , Length(min=4 , max=80)], render_kw={"placeholder" : "address"})
-    key = StringField(validators=[InputRequired() , Length(min=4 , max=80)], render_kw={"placeholder" : "key"})
-
+    
     submit = SubmitField("Register")
 
     def validate_username(self , username):
@@ -219,7 +215,7 @@ def register():
 
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
-        new_user = User(username=form.username.data , password=hashed_password , address=form.address.data , key=form.key.data)
+        new_user = User(username=form.username.data , password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
