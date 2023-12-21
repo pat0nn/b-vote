@@ -1,5 +1,3 @@
-
-#from brownie import Contract
 from flask import Flask , render_template , url_for , redirect , abort , request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin , login_user , LoginManager , login_required , logout_user , current_user
@@ -66,7 +64,7 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField("Log In")
 
-# ===========================================================Login System====================================================================== 
+# =========================================================== Blockchain Alogithm ====================================================================== 
 
 
 class Block:
@@ -198,7 +196,8 @@ class Blockchain:
         return True
 
 
-#========================================================================================================================================
+#================================================================= Webapp ===============================================================
+
 @app.route('/login' , methods=['GET' , 'POST'])
 def login():
     form = LoginForm()
@@ -268,21 +267,13 @@ def logout():
     return redirect(url_for('login'))
 
 
-#=================================================== OLD BLOCKCHAIN ================
-
-# the node's copy of blockchain
 blockchain = Blockchain()
 blockchain.create_genesis_block()
-
-# the address to other participating members of the network
 peers = set()
-
 vote_check=[]
-
 posts = []
 
-# endpoint to submit a new transaction. This will be used by
-# our application to add new data (posts) to the blockchain
+
 @app.route('/new_transaction', methods=['POST'])
 def new_transaction():
     tx_data = request.get_json()
@@ -482,11 +473,9 @@ def voted():
     if not result:
         return "No transactions to mine"
     else:
-        # Making sure we have the longest chain before announcing to the network
         chain_length = len(blockchain.chain)
         consensus()
         if chain_length == len(blockchain.chain):
-            # announce the recently mined block to the network
             announce_new_block(blockchain.last_block)
     logout_user()
     return render_template('voted.html')
