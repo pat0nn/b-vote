@@ -13,7 +13,7 @@ git clone https://github.com/pat0nn/voting-system.git
 Install the dependencies,
 
 ```sh
-cd E-voting-system-using-blockchain-and-python
+cd voting-system
 pip install -r requirements.txt
 ```
 
