@@ -253,6 +253,7 @@ def home():
     for post in posts:
         vote_check.append(post["voter_id"])
     if user.id in vote_check:
+        logout_user()
         return render_template('abort.html')
     return render_template('home.html')
 
@@ -456,9 +457,10 @@ def vote():
             requests.post(new_tx_address,
                           json=post_object,
                           headers={'Content-type': 'application/json'})
-        
+
         return redirect(url_for('voted'))
     else:
+
         return render_template('vote.html')
 
 
@@ -499,8 +501,8 @@ def adminPortal():
 
     for post in posts:
         vote_gain.append(post["party"])
-    
-    return render_template('result.html', aang=vote_gain.count('AANG'), korra=vote_gain.count('KORRA'), roku=vote_gain.count('ROKU'))
+    print(vote_gain)
+    return render_template('result.html', aang=vote_gain.count('TOM'), korra=vote_gain.count('KORRA'), roku=vote_gain.count('ROKU'))
         
 
 if __name__ == "__main__":
