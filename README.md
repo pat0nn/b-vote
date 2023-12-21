@@ -31,25 +31,26 @@ One instance of our blockchain node is now up and running at port 8000.
 You can change the port by changing the "port "variable in [here](./app.py#L15)
 
 Here are a few screenshots
+
 ##### 1. Login
 
-![image.png](https://github.com/pat0nn/voting-system/blob/main/img/login.png)
+![image.png](./img/login.png)
 
 ##### 2. Homepage
 
-![image.png](https://github.com/pat0nn/voting-system/blob/main/img/homepage.png)
+![image.png](./img/homepage.png)
 
 ##### 3. Votepage
 
-![image.png](https://github.com/pat0nn/voting-system/blob/main/img/vote.png)
+![image.png](./img/vote.png)
 
 ##### 4. Resutl (Admin only)
 
-![image.png](https://github.com/pat0nn/voting-system/blob/main/img/result.png)
+![image.png](./img/result.png)
 
 ##### 5. Chain
 
-![image.png](https://github.com/pat0nn/voting-system/blob/main/img/chain.png)
+![image.png](./img/chain.png)
 
 
 
