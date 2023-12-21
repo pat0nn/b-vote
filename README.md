@@ -48,11 +48,17 @@ Here are a few screenshots
 
 ![image.png](./img/result.png)
 
+**Note**: You can change admin in [credentials.py](./credentials.py) file. Login with the admin account and go to the result page by adding the /adminPortal endpoint
+
 ##### 5. Chain
 
 ![image.png](./img/chain.png)
 
-h
+###### *If you get this error :*
+![image.png](./img/error.png)
+ You just add endpoint /logout and reload, then everything will work normally again :)
+
+***
 
 To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. 
 
@@ -73,8 +79,6 @@ curl -X POST \
 ```
 
 This will make the node at port 8000 aware of the nodes at port 8001 and 8002, and make the newer nodes sync the chain with the node 8000, so that they are able to actively participate in the mining process post registration.
-
-To update the node with which the frontend application syncs (default is localhost port 8000), change `CONNECTED_SERVICE_ADDRESS` field in the [views.py](/app/views.py) file.
 
 Once you do all this, you can run the application, create transactions (post vote via the web inteface), and once you mine the transactions, all the nodes in the network will update the chain. The chain of the nodes can also be inspected by inovking `/chain` endpoint using cURL.
 
