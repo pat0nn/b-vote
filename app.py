@@ -1,3 +1,4 @@
+import sys
 from flask import Flask , render_template , url_for , redirect , abort , request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin , login_user , LoginManager , login_required , logout_user , current_user
@@ -22,6 +23,7 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
+user = None 
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -199,7 +201,6 @@ def login():
     form = LoginForm()
     
     if form.validate_on_submit():
-        global user
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             if bcrypt.check_password_hash(user.password , form.password.data):
@@ -251,8 +252,8 @@ def home():
     vote_check = []
 
     for post in posts:
-        vote_check.append(post["voter_id"])
-    if user.id in vote_check:
+        vote_check.append(post["voter_id"])        
+    if current_user and current_user.get_id() in vote_check:
         logout_user()
         return render_template('abort.html')
     return render_template('home.html')
@@ -430,33 +431,15 @@ def announce_new_block(block):
 def vote():
     
     if  request.method == 'POST':
-        
         new_tx_address = "{}/new_transaction".format(CONNECTED_SERVICE_ADDRESS)
-        if request.form['voteBtn'] == 'TOM':
-            post_object = {
-            'voter_id': user.id ,
-            'party': 'TOM'
-            }
-            requests.post(new_tx_address,
-                          json=post_object,
-                          headers={'Content-type': 'application/json'})
-        elif request.form['voteBtn'] == 'KORRA':
-            post_object = {
-            'voter_id': user.id ,
-            'party': 'KORRA'
-            }
-            requests.post(new_tx_address,
-                          json=post_object,
-                          headers={'Content-type': 'application/json'})
 
-        elif request.form['voteBtn'] == 'ROKU':
-            post_object = {
-            'voter_id': user.id ,
-            'party': 'ROKU'
-            }
-            requests.post(new_tx_address,
-                          json=post_object,
-                          headers={'Content-type': 'application/json'})
+        post_object = {
+        'voter_id': current_user.get_id() ,
+        'party': request.form['voteBtn']
+        }
+        requests.post(new_tx_address,
+                        json=post_object,
+                        headers={'Content-type': 'application/json'})
 
         return redirect(url_for('voted'))
     else:
@@ -506,6 +489,11 @@ def adminPortal():
         
 
 if __name__ == "__main__":
+    try:
+        port = sys.argv[1]
+    except:
+        port = 8000
+    print(port)
     app.run(host="0.0.0.0" ,port=port, debug = True)
 
     
