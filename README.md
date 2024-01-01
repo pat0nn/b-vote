@@ -28,8 +28,10 @@ python3 app.py
 
 One instance of our blockchain node is now up and running at port 8000.
 
-You can change the port by changing the "port "variable in [here](./app.py#L15)
-
+You can change the port by adding the "port "variable (such as 8001)
+```sh
+python3 app.py 8001
+```
 Here are a few screenshots
 
 ##### 1. Login
@@ -58,13 +60,11 @@ Here are a few screenshots
 
 ![image.png](./img/chain.png)
 
-###### *If you get this error :*
-![image.png](./img/error.png)
- You just add endpoint /logout and reload, then everything will work normally again :)
+
 
 ***
 
-To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. You can do this by clone project to another folder, change the port (such as 8001) and run 
+To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. You can do this by run a new port in another terminal with [this](./README.md#L34) command
 
 
 Then you can use the following cURL requests to register the nodes at port 8001 with the already running 8000.
