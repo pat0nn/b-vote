@@ -64,7 +64,7 @@ Here are a few screenshots
 
 ***
 
-To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. You can do this by run a new port in another terminal with command.
+To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. You can do this by run a new port in another terminal.
 Example:
 ```sh
 python3 app.py 8001
