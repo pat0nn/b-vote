@@ -13,7 +13,13 @@ from hashlib import sha256
 import requests
 from flask_migrate import Migrate
 
-port = 8000
+
+try:
+    port = sys.argv[1]
+except:
+    port = 8000
+print(port)
+
 CONNECTED_SERVICE_ADDRESS = f"http://127.0.0.1:{port}"
 
 
@@ -489,11 +495,6 @@ def adminPortal():
         
 
 if __name__ == "__main__":
-    try:
-        port = sys.argv[1]
-    except:
-        port = 8000
-    print(port)
     app.run(host="0.0.0.0" ,port=port, debug = True)
 
     

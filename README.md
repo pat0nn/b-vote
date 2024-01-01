@@ -48,7 +48,7 @@ Here are a few screenshots
 
 ![image.png](./img/vote.png)
 
-##### 5. Resutl (Admin only)
+##### 5. Result (Admin only)
 
 ![image.png](./img/result.png)
 
