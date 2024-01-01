@@ -64,9 +64,11 @@ Here are a few screenshots
 
 ***
 
-To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. You can do this by run a new port in another terminal with [this](./README.md#L34) command
-
-
+To play around by spinning off multiple custom nodes, use the `register_with/` endpoint to register a new node. You can do this by run a new port in another terminal with command.
+Example:
+```sh
+python3 app.py 8001
+```
 Then you can use the following cURL requests to register the nodes at port 8001 with the already running 8000.
 ```
 curl -X POST \
